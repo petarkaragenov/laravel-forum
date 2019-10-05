@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-user App\Question;
+use App\Question;
 
 class User extends Authenticatable
 {
@@ -38,7 +38,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected function questions() {
+    public function questions() {
         return $this->hasMany(Question::class);
     }
 }
