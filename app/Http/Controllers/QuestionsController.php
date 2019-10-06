@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class QuestionsController extends Controller
 {
@@ -15,7 +16,6 @@ class QuestionsController extends Controller
     public function index()
     {
         $questions = Question::with('user')->latest()->paginate(5); // show 5 questions per page and the latest first
-
         return view('questions.index', compact('questions'));
     }
 

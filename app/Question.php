@@ -30,4 +30,14 @@ class Question extends Model
     public function getPartialTextAttribute() {
         return Str::limit($this->body, 250);
     }
+
+    public function getStatusAttribute() {
+        if ($this->answers > 0) {
+            if ($this->best_answer_id) {
+                return "answer-accepted";
+            }
+            return "answered";
+        }
+        return "unanswered";
+    }
 }
